@@ -1,45 +1,24 @@
-import { useState } from 'react'
-import './App.css'
-
+import { Routes, Route} from 'react-router-dom';
+import Home from './routes/home/HomeComponent';
+import Navigation from './routes/navigation/NavigationComponent';
+import SignIn  from './routes/sign-in/SignInComponent';
 function App() {
 
+
+  const Shop = () => {
+    return <h1>I am Shop Page</h1>
+  }
   return (
-    <div className="categories-container">
-      <div className="category-container">
-        {/* <img src="" alt="" /> */}
-        <div className="category-body-container">
-          <h2>Hats</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className="category-container">
-        {/* <img src="" alt="" /> */}
-        <div className="category-body-container">
-          <h2>Jackets</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className="category-container">
-        {/* <img src="" alt="" /> */}
-        <div className="category-body-container">
-          <h2>Sneakers</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className="category-container">
-        {/* <img src="" alt="" /> */}
-        <div className="category-body-container">
-          <h2>Womens</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className="category-container">
-        {/* <img src="" alt="" /> */}
-        <div className="category-body-container">
-          <h2>Mens</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
+    <div>
+      <Routes>
+        <Route path='/' element={<Navigation />}>
+          <Route index element={<Home />} />   // Varsayılan rota, 'path="/"'
+          <Route path='shop' element={<Shop />} />  // '/shop' rotası
+          <Route path='signIn' element={<SignIn />} /> 
+        </Route>
+      </Routes>
+
+
     </div>
   )
 }
