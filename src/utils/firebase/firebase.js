@@ -43,10 +43,12 @@ export const auth = getAuth();
 //Google ile pop-up üzerinden kimlik doğrulama fonksiyonunu tanımla
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
 
+export const signInWithGoogleRedirect=()=> signInWithRedirect(auth, provider);
+
 //Firestore bağlantısını oluştur
 export const db = getFirestore();
 
-//Kullanıcı kimliği (uid) kullanaral firestore'da bir kullanıcı belgesi oluştur 
+//Kullanıcı kimliği (uid) kullanarak firestore'da bir kullanıcı belgesi oluştur 
 export const createUserDocumentFromAuth = async (userAuth) => {
     //Kullanıcı belge referansını oluştur
     const userDocRef = doc(db, 'users', userAuth.uid);
