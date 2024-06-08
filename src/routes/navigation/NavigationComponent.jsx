@@ -1,4 +1,3 @@
-import React from 'react';
 import { Fragment } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import CrownLogo from '../../assets/crown.svg';
@@ -15,6 +14,11 @@ function Navigation() {
                     <Link className='nav-link' to='/shop'>
                         SHOP
                     </Link>
+                </div>
+                <div className="nav-link-container">
+                   <Link className="nav-link" to='/SignIn'>
+                        SIGN IN
+                   </Link>
                 </div>
                 
             </div>

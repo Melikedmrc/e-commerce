@@ -12,8 +12,8 @@ function App() {
     <div>
       <Routes>
         <Route path='/' element={<Navigation />}>
-          <Route index element={<Home />} />   // Varsayılan rota, 'path="/"'
-          <Route path='shop' element={<Shop />} />  // '/shop' rotası
+           <Route index element={<Home />} />   {/*Varsayılan rota, 'path="/"' */}
+          <Route path='shop' element={<Shop />} /> {/* '/shop' rotası */} 
           <Route path='signIn' element={<SignIn />} /> 
         </Route>
       </Routes>
