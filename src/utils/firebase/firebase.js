@@ -4,7 +4,8 @@ import {
     getAuth,              //Kimlik doğrulama modülünü import et
     signInWithRedirect,   //Yönlendirme ile giriş fonksiyonunu import et
     signInWithPopup,      //Açılır pencere ile giriş fonksiyonunu import et
-    GoogleAuthProvider    //Google sağlayıcısını import et
+    GoogleAuthProvider,    //Google sağlayıcısını import et
+    createUserWithEmailAndPassword // E-posta ve şifre ile kullanıcı oluşturma fonksiyonunu import et
 } from "firebase/auth";
 
 import {
@@ -49,7 +50,9 @@ export const signInWithGoogleRedirect=()=> signInWithRedirect(auth, provider);
 export const db = getFirestore();
 
 //Kullanıcı kimliği (uid) kullanarak firestore'da bir kullanıcı belgesi oluştur 
-export const createUserDocumentFromAuth = async (userAuth) => {
+export const createUserDocumentFromAuth = async (userAuth, additionalInformation={}) => {
+    if(!userAuth) return;
+
     //Kullanıcı belge referansını oluştur
     const userDocRef = doc(db, 'users', userAuth.uid);
 
@@ -69,6 +72,7 @@ export const createUserDocumentFromAuth = async (userAuth) => {
                 displayName,
                 email,
                 createdAt,
+                ...additionalInformation
             });
         } catch (error) {
             //Hata durumunda konsola hata mesajını yazdır
@@ -76,4 +80,10 @@ export const createUserDocumentFromAuth = async (userAuth) => {
         }
     }
     return userDocRef;
+}
+
+export const createAuthUserWithEmailAndPassword = async (email, password) =>{
+    if(!email || !password) return; // E-posta veya şifre yoksa, fonksiyondan çık
+
+    return await createUserWithEmailAndPassword(auth, email,password);// Firebase kimlik doğrulama modülü ile e-posta ve şifre kullanarak kullanıcı oluştur
 }
