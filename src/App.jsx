@@ -1,7 +1,7 @@
 import { Routes, Route} from 'react-router-dom';
 import Home from './routes/home/HomeComponent';
 import Navigation from './routes/navigation/NavigationComponent';
-import SignIn  from './routes/sign-in/SignInComponent';
+import Authentication  from './routes/authentication/authenticationComponent';
 function App() {
 
 
@@ -14,7 +14,7 @@ function App() {
         <Route path='/' element={<Navigation />}>
            <Route index element={<Home />} />   {/*Varsayılan rota, 'path="/"' */}
           <Route path='shop' element={<Shop />} /> {/* '/shop' rotası */} 
-          <Route path='signIn' element={<SignIn />} />
+          <Route path='auth' element={<Authentication />} />
         </Route>
       </Routes>
 

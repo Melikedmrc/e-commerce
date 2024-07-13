@@ -16,7 +16,7 @@ function Navigation() {
                     </Link>
                 </div>
                 <div className="nav-link-container">
-                   <Link className="nav-link" to='/SignIn'>
+                   <Link className="nav-link" to='/auth'>
                         SIGN IN
                    </Link>
                 </div>
