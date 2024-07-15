@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,  useContext } from 'react';
 import {
     signInWithGooglePopup,
     createUserDocumentFromAuth,
@@ -7,6 +7,7 @@ import {
 import ButtonComponent from "../button/buttonComponent";
 import FormInputComponent from "../formInput/formInputComponent";
 import "./signInStyles.scss";
+import { UserContext  } from "../../contexts/userContext";
 
 const defaultFormFields = {
     email: '',
@@ -17,6 +18,8 @@ function SignInFormComponent() {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { email, password } = formFields;
 
+    const {setCurrentUser}=useContext(UserContext)
+
     const resetFormFields = () => {
         setFormFields(defaultFormFields);
     };
@@ -25,27 +28,35 @@ function SignInFormComponent() {
         const { user } = await signInWithGooglePopup();
         await createUserDocumentFromAuth(user);
     };
-
     const handleSubmit = async (event) => {
         event.preventDefault();
-
+    
         try {
-            const response = await signInAuthUserWithEmailAndPassword(email, password);
-            console.log(response);
+            const {user} = await signInAuthUserWithEmailAndPassword(email, password);
+            setCurrentUser(user);
+            console.log(user);
             resetFormFields();
         } catch (error) {
             switch (error.code) {
                 case 'auth/wrong-password':
-                    console.log('Incorrect password for email');
+                    alert('The password you entered is incorrect.');
                     break;
                 case 'auth/user-not-found':
-                    console.log('No user associated with this email');
+                    alert('No user found with this email.');
+                    break;
+                case 'auth/invalid-email':
+                    alert('Invalid email address.');
+                    break;
+                case 'auth/invalid-credential':
+                    alert('Invalid credential.');
                     break;
                 default:
-                    console.log(error);
+                    alert('An error occurred: ' + error.message);
             }
         }
     };
+    
+    
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -82,6 +93,6 @@ function SignInFormComponent() {
             </form>
         </div>
     );
-};
+}
 
 export default SignInFormComponent;
