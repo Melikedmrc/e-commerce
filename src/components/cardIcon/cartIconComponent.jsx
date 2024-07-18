@@ -1,19 +1,20 @@
 import './cardIconStyles.scss'
 import { ReactComponent as ShoppingBag } from "../../assets/shoppingBag.svg";
-
 import { useContext } from "react";
 import { CartContext } from "../../contexts/shoppingCartContext";
 
-function cartIconComponent() {
+function CartIconComponent() {
+  const { toggleCart, cartItems } = useContext(CartContext);
 
-  const {toggleCart} = useContext(CartContext);
+  // Sepetteki toplam ürün sayısını hesapla
+  const itemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <div className='cart-icon-container' onClick={toggleCart}>
-        <ShoppingBag className='shopping-icon'/>
-        <span className='item-count' >0</span>
+      <ShoppingBag className='shopping-icon' />
+      <span className='item-count'>{itemCount}</span>
     </div>
-  )
+  );
 }
 
-export default cartIconComponent;
+export default CartIconComponent;

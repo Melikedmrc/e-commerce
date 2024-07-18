@@ -2,28 +2,29 @@ import './cartDropdownStyles.scss'
 import Button from "../button/buttonComponent";
 import {useContext} from "react";
 import { CartContext } from "../../contexts/shoppingCartContext";
+import CartItem from '../cartItem/cartItemComponent';
+import { Link } from 'react-router-dom';
 
-function cartDropdownComponent() {
-  const {toggleCart, cartItems } = useContext(CartContext);
+function CartDropdown() {
+  const { cartItems } = useContext(CartContext);
 
   return (
     <div className="cart-dropdown-container">
-    <div className='cart-items'>
-      {cartItems.map(item => (
-        <div key={item.id} className='cart-item'>
-          {/* <img src={item.imageUrl} alt={item.name} /> */}
-          <div className='item-details'>
-            <span className='name'>{item.name}</span>
-            <span className='price'>
-            {' '} {item.quantity} {' '} ${item.price}
-            </span>
-          </div>
-        </div>
-      ))}
-    </div>
-         <Button onClick={toggleCart}>GO TO CHECKOUT</Button>
+      <div className='cart-items'>
+        {cartItems.length ? (
+          cartItems.map(item => (
+            <CartItem key={item.id} cartItem={item} />
+          ))
+        ) : (
+          <span className='empty-message'>Your cart is empty</span>
+        )}
+      </div>
+      <Link to='/checkout'>
+        <Button>GO TO CHECKOUT</Button>
+      </Link>
+      
     </div>
   )
 }
 
-export default cartDropdownComponent
+export default CartDropdown;

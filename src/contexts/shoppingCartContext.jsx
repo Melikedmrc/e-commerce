@@ -1,5 +1,4 @@
 import { createContext, useState } from "react";
-
 // createContext bir fonksiyon olarak çağrılır
 export const CartContext = createContext();
 
