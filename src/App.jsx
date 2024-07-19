@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Navigation />}>
            <Route index element={<Home />} />   {/*Varsayılan rota, 'path="/"' */}
-          <Route path='shop' element={<Shop />} /> {/* '/shop' rotası */} 
+          <Route path='shop/*' element={<Shop />} /> {/* '/shop' rotası */} 
           <Route path='auth' element={<Authentication />} />
           <Route path='checkout' element={<Checkout/>}/>
         </Route>
