@@ -53,6 +53,7 @@ Visit `http://localhost:3000` in your browser.
 *   React
 *   Styled Components
 *   Vite
+*   Firebase
 
 ## License
 
