@@ -12,7 +12,7 @@ export const CategoriesProvider = ({ children }) => {
     const getCategoriesMap = async () => {
        // Firestore'dan verileri almak için kullanılan asenkron fonksiyon
       const categoryMap = await getCategoriesAndDocuments('categories');
-      console.log(categoryMap);
+      // console.log(categoryMap);
       setCategoriesMap(categoryMap);
     };
     getCategoriesMap();

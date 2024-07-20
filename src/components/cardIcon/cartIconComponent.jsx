@@ -1,4 +1,4 @@
-import './cardIconStyles.scss'
+import  { CartIconContainer, ItemCount } from './cardIconStyles'
 import { ReactComponent as ShoppingBag } from "../../assets/shoppingBag.svg";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/shoppingCartContext";
@@ -10,10 +10,10 @@ function CartIconComponent() {
   const itemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   return (
-    <div className='cart-icon-container' onClick={toggleCart}>
+    <CartIconContainer onClick={toggleCart}>
       <ShoppingBag className='shopping-icon' />
-      <span className='item-count'>{itemCount}</span>
-    </div>
+      <ItemCount>{itemCount}</ItemCount>
+    </CartIconContainer>
   );
 }
 

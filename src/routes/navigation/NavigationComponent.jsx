@@ -1,7 +1,7 @@
 import { Fragment, useContext } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import CrownLogo from '../../assets/crown.svg';
-import '../navigation/NavigationStyles.scss';
+import {NavigationContainer, LogoContainer, NavLinkContainer, NavLink}from './NavigationStyles.jsx';
 import { UserContext } from '../../contexts/userContext';
 import { CartContext } from "../../contexts/shoppingCartContext";
 
@@ -24,14 +24,14 @@ function Navigation() {
 
     return (
         <Fragment>
-            <div className='navigation'>
-                <Link className='logo-container' to='/'>
+            <NavigationContainer>
+                <LogoContainer to='/'>
                     <img src={CrownLogo} alt="Crown Logo" className="logo" />
-                </Link>
-                <div className="nav-link-container">
-                    <Link className='nav-link' to='/shop'>
+                </LogoContainer>
+                <NavLinkContainer>
+                    <NavLink to='/shop'>
                         SHOP
-                    </Link>
+                    </NavLink>
 
                     {
                         currentUser ? (
@@ -39,20 +39,20 @@ function Navigation() {
                             SIGN OUT
                             </span>
                         ) : (
-                            <Link className="nav-link" to='/auth'>
+                            <NavLink to='/auth'>
                                 SIGN IN
-                            </Link>
+                            </NavLink>
                         )
                     }
                     <CartIcon />
-                </div>
+                </NavLinkContainer>
                 {
                   isCartOpen &&  
                     <CartDropdown/>
                 }
                 
 
-            </div>
+            </NavigationContainer>
             <Outlet />
         </Fragment>
     );
