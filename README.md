@@ -1,4 +1,4 @@
-\# E-Commerce Web Project
+# E-Commerce Web Project
 
 ## Description
 
@@ -12,35 +12,27 @@ A React-based e-commerce web project with styled components and user authenticat
 - npm or yarn
 
 ### Installation
+### Steps
 
-1. Clone the repository:
+1. Clone the project:
 
-   \`\`\`bash
-   git clone https://github.com/Melikedmrc/e-commerce.git
+    ```bash
+    git clone https://github.com/Melikedmrc/e-commerce.git
+    cd e-commerce
+    ```
 
-1.  Navigate to the project directory:
+2. Install dependencies:
 
-cd e-commerce
+    ```bash
+    npm install
+    ```
 
-1.  Install dependencies:
+3. Start the project:
 
-
-npm install 
-
-Or:
-
-yarn install
-
-### Running the Project
-
-Start the development server:
-
-npm run dev
-
-Or:
-
-yarn dev
-
+    ```bash
+    npm run dev
+    ```
+    
 Visit `http://localhost:3000` in your browser.
 
 ### Login Credentials
@@ -55,6 +47,10 @@ Visit `http://localhost:3000` in your browser.
 *   Vite
 *   Firebase
 
+## Contributing
+
+If you want to contribute, please send a pull request or open an issue.
+
 ## License
 
-MIT License
+This project is licensed under the MIT License. See the `LICENSE` file for more information.        
