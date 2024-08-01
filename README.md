@@ -8,7 +8,7 @@ A React-based e-commerce web project with styled components and user authenticat
 
 ### Prerequisites
 
-- Node.js (v14 or later)
+- Node.js 
 - npm or yarn
 
 ### Installation
